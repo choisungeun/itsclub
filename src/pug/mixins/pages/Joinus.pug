@@ -1,0 +1,205 @@
+mixin Service(img, title, description)
+  .d-flex.mb-5(data-zanim-timeline!={} data-zanim-trigger='scroll')
+    if img
+      .overflow-hidden
+        img(src=`${CWD}assets/img/icons/${img}` alt='' width=50 data-zanim-xs!={delay: 0.2, animation: 'slide-right'}).me-3.me-sm-4
+      .flex-1
+        .overflow-hidden
+          h4.mb-2(data-zanim-xs!={delay: 0.1, animation: 'slide-right'})!=title
+        .overflow-hidden
+          p.mb-0.fs--1(data-zanim-xs!={delay: 0.2, animation: 'slide-right'})!=description
+    else
+      .flex-1
+        .overflow-hidden
+          h4.mb-2(data-zanim-xs!={delay: 0.1, animation: 'slide-right'})!=title
+        .overflow-hidden
+          p.mb-0.fs--1(data-zanim-xs!={delay: 0.2, animation: 'slide-right'})!=description
+        .overflow-hidden
+          h6.text-danger.mt-3 *는 필수 항목입니다.
+
+mixin Joinus
+  .col-sm-8.col-md-6.col-lg-10.col-xl-8(data-zanim-xs!={
+    delay: 0.5,
+    animation: 'slide-right'
+  } data-zanim-trigger='scroll')
+    .mb-5.mb-lg-7.overflow-hidden
+      h2.text-decoration-underline.fs-2.fs-md-3(data-zanim-xs!={delay: 0.0} data-zanim-trigger='scroll') 잇츠클럽(It's Club) 회원신청서
+
+    +Service('icon-target.svg', '프리미엄 유료회원(Premium Member)', '주기적인 월회비(여행상품권)를 모아서 여행을 함께 하는 유료회원입니다.<br>클럽의 정규 회원으로 프리미엄 서비스와 정규적인 모임 행사에 초대 받을 수 있습니다.<br>매월 여행 안내를 받고 함께 여행하는 친구를 추천했을때 지원금(수당)과 여행 수입을 얻습니다.<br>최고 리더자는 각 나라 및 우리나라 지자체의 여행 인스팩션에 초대 받을 수 있습니다.')
+
+    +Service('icon-line-chart.svg', '일반회원(General Member)', '입회급(연회비) 납부로 회원자격을 부여 받고 클럽의 다양한 상품을 선택 이용합니다.<br>회원유지 기간은 1년으로 매년 갱신하여 이용하는 연회원입니다.<br>클럽회원으로 할인율이 적용되고 상품을 제공 받고 매월 여행, 공연등 다양한 정보를 얻습니다.<br> 정기적 회원 모임에 참석하실 수 있으며 회원간의 유대증진에 노력해 주셔야 합니다.')
+
+    +Service(false, '회원 가입 안내', '잇츠투어스 잇츠클럽 회원이 되어 주셔서 감사합니다. 아래 동의서와 신청서를 작성해 주시기 바랍니다. 아래의 신청서 내용은 당사 회원 서비스를 위한 목적으로만 사용됩니다.')
+
+    form.needs-validation.mt-5(novalidate)
+      .row.gy-4.align-items-center.mb-4
+        .col-12
+          label(for='koreanNameInput') 회원 한글명
+          input.form-control.bg-light(type='text', placeholder='한글 이름')
+        .col-12
+          label(for='englishNameInput') 회원 영문명
+          input.form-control.bg-light(type='text', placeholder='영문 이름')        
+        .col-12
+          label(for='englishNameInput') 성별
+          .row.gy-2.align-items-center
+            .col-6
+              input#genderMan.form-check-input(type='radio', name='gender', value='man', checked='')
+              label.form-check-label(for='man')
+                | 남          
+            .col-6
+              input#genderWoman.form-check-input(type='radio', name='gender', value='woman')
+              label.form-check-label(for='woman')
+                | 여
+        .col-12
+          label(for='englishNameInput') 주민등록번호 *
+          input.form-control.bg-light(type='text', placeholder='811001-1234567')
+        .col-12
+          label(for='englishNameInput') 휴대폰 통신사
+          .row.gy-4.align-items-center
+            .col-3
+              input#mobileKT.form-check-input(type='radio', name='mobile', value='kt', checked='')
+              label.form-check-label(for='sk')
+                | SK
+            .col-3
+              input#mobileSK.form-check-input(type='radio', name='mobile', value='sk')
+              label.form-check-label(for='kt')
+                | KT
+            .col-3
+              input#mobileLG.form-check-input(type='radio', name='mobile', value='lgu')
+              label.form-check-label(for='lgu')
+                | LGU+
+            .col-3
+              input#mobileETC.form-check-input(type='radio', name='mobile', value='etc')
+              label.form-check-label(for='etc')
+                | 알뜰폰
+        .col-6
+          label(for='englishNameInput') 연락처          
+          input.form-control.bg-light.form-control-sm(type='tel', placeholder='010', pattern="[0-9]+")
+          small.form-text.text-muted 숫자만 입력해 주세요.
+        .col-12
+          label(for='englishNameInput') 이메일 주소
+          input.form-control.bg-light(type='email', placeholder='Email Address', required='')
+          .invalid-feedback
+            | Please provide a valid email.
+        .col-12
+          label(for='englishNameInput') 회원 주소
+          .row.gy-2.align-items-center
+            .col-6
+              input#postNumber.form-control.bg-light(type='text', required='')
+            .col-3
+              input#postNumberSearch.btn.btn-light(type='button', name='search', value='우편번호검색', onclick='kakaopost()')
+          input#detailAddress.form-control.bg-light.mt-1(type='text', required='')
+          .invalid-feedback
+            | Please provide a valid email.
+        .col-12
+          label(for='englishNameInput') 회원 유형
+          .row.gy-2.align-items-center(data-filter-nav)
+            .col-6
+              input#premiumMember.form-check-input(type='radio', name='membertype', value='premium', checked='', data-filter='.premium')
+              label.form-check-label(for='premium')
+                | 프리미엄 유료회원(수익성 회원)
+            .col-6
+              input#generalMember.form-check-input(type='radio', name='membertype', value='general', data-filter='.general')
+              label.form-check-label(for='general')
+                | 일반 회원
+          small.form-text.text-danger 
+            | 유료회원
+          small.form-text.text-muted
+            | 이란 주기적 회비를 납부하면서 여행과 수익을 함께 하는 프리미엄 회원입니다.
+          br
+          small.form-text.text-danger
+            | 일반회원
+          small.form-text.text-muted
+            | 은 입회금만 납부하여 회원자격을 부여받고 즐거운 여행을 선택 관광하는 회원입니다.(유효기간은 1년 갱신형)
+        .row.g-3.mt-3(data-isotope!={
+          layoutMode: 'packery',   
+        })
+          .col-12.isotope-item.premium
+            label(for='englishNameInput') 회원소유 은행명
+            select#exampleFormControlSelect1.form-control
+              option(selected='', disabled='', value="") 은행을 선택해주세요.
+              option 국민은행
+              option 하나은행
+              option 기업은행
+              option 농협
+            small.form-text.text-danger
+              | ※ 유료회원
+            small.form-text.text-muted
+              | 만 입력하는 란입니다.
+            .invalid-feedback
+              | Please provide a valid email.
+          .col-12.isotope-item.premium
+            label(for='englishNameInput') 회원 은행계좌번호
+            input.form-control.bg-light(type='text', placeholder='130-151-500681', required)
+            small.form-text.text-danger
+              | ※ 유료회원
+            small.form-text.text-muted
+              | 만 입력하는 란입니다. 유료회원의 여행 수입 거래사용 은행계좌번호로 사용됩니다. 
+            small.form-text.text-danger
+              | 본인 명의 계좌번호만 인정됩니다.
+            .invalid-feedback
+              | Please provide a valid email.
+          .col-12.isotope-item.premium
+            label(for='englishNameInput') 회원비 결제일 선택
+            .row.gy-4.align-items-center
+              .col-3
+                input#dayone.form-check-input(type='radio', name='payday', value='dayone', checked='')
+                label.form-check-label(for='sk')
+                  | 1일
+              .col-3
+                input#dayfive.form-check-input(type='radio', name='payday', value='dayfive')
+                label.form-check-label(for='kt')
+                  | 5일
+              .col-3
+                input#dayfifteen.form-check-input(type='radio', name='payday', value='dayfifteen')
+                label.form-check-label(for='lgu')
+                  | 15일
+              .col-3
+                input#daytwenty.form-check-input(type='radio', name='payday', value='daytwenty')
+                label.form-check-label(for='etc')
+                  | 20일
+            small.form-text.text-danger
+              | ※ 유료회원만 입력합니다. 회원비를 아래의 매월 선택한 날짜에 출금 납부를 동의 합니다. 
+            small.form-text.text-muted
+              | 여행 수입은 매월 1일부터 말일까지를 익월 21일에 정산(송금)됩니다.
+            .invalid-feedback
+              | Please provide a valid email.
+        .col-12
+          label(for='englishNameInput') 잇츠클럽(It's Club) 소개자 성명
+          input.form-control.bg-light(type='email', required='')
+          small.form-text.text-muted
+            | 어떤분을 통해 잇츠클럽(It's Club)을 소개 받으셨습니까? 그분의 성함 또는 닉네임을 기록해 주십시오.
+          .invalid-feedback
+            | Please provide a valid email.            
+        .col-md-6
+          label(for='englishNameInput') 비밀번호
+          input.form-control.bg-light(type='password', placeholder='Password')
+        .col-md-6
+          label(for='englishNameInput') 비밀번호 확인
+          input.form-control.bg-light(type='password', placeholder='Confirmation')        
+        .col-12
+          .form-check            
+            input#privatePolicy.form-check-input(type='checkbox', value='', required='')
+            label.form-check-label(for='privatePolicyLabel') 
+              | 개인정보 이용, 제공, 활용 관리 동의 안내
+              a(href='#privacyPolicyModal', data-bs-toggle='modal').text-black (동의서 전문보기)
+            .invalid-feedback
+              | You must agree before submitting.
+        .col-12
+          .form-check            
+            input#informationTerms.form-check-input(type='checkbox', value='', required='')
+            label.form-check-label(for='informationTermsLabel') 
+              | 개인정보 제3자 제공 및 동의 안내
+              a(href='#informationTermsModal', data-bs-toggle='modal').text-black (동의서 전문보기)
+            .invalid-feedback
+              | You must agree before submitting.
+
+      .row.mb-4.align-items-center   
+        .col-auto.d-grid
+          input.btn.btn-dark(type='submit', name='submit', value='Create an Account')
+
+        .col-sm
+          p.fs--1.text-700.mb-0.font-sans-serif.mt-2.mt-lg-0
+            | By signing up, you agree to the
+            a(href='#!').text-black terms and conditions.
+

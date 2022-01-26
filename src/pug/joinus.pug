@@ -1,0 +1,49 @@
+extends layouts/LayoutSplitRight
+include ./mixins/pages/Joinus.pug
+
+block beforeMainContent
+  +FancyNav(false, 
+  {    
+    "클럽 정기행사": "./index.html#defaultWhyUs",
+    "공연 쇼 이벤트": "./index.html#defaultServices",
+    "컨시어지 숙박 호텔": "./index.html#defaultProgressbar",
+    "관광지 엑티비티": "./index.html#defaultPricingPlan",
+    "레스토랑 맛집": "./index.html#defaultMembers",
+    "교통 렌트": "./index.html#defaultGallery",
+    "쇼핑": "./index.html#defaultGallery",
+    "회원가입": "./joinus.html"
+  })(data-onscroll-fade-in=false)
+
+append variables
+  - var bg = 'signup';
+
+prepend scripts
+  script(src=`${CWD}vendors/isotope-layout/isotope.pkgd.min.js`) 
+  script(src=`${CWD}vendors/isotope-packery/packery-mode.pkgd.min.js`) 
+  script(src=`//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js`)  
+  script.
+    function kakaopost() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+          console.log(data);
+
+          // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+          // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+          // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+          var roadAddr = data.roadAddress; // 도로명 주소 변수
+          var jibunAddr = data.jibunAddress; // 지번 주소 변수
+          var buildingNm = data.buildingName; // 지번 주소 변수
+          
+          // 우편번호와 주소 정보를 해당 필드에 넣는다.
+          document.getElementById("postNumber").value = data.zonecode;
+          if (roadAddr !== "") {
+            document.getElementById("detailAddress").value = roadAddr + " " + buildingNm;
+          } else if (jibunAddr !== "") {
+            document.getElementById("detailAddress").value = jibunAddr + " " +  buildingNm;
+          }
+        },
+      }).open();
+    }
+
+block splitRightContent 
+  +Joinus

@@ -1,0 +1,175 @@
+append variables
+  - var title = 'Sparrow | Look like an expert right from the start';
+  - var theme = `${name}-${version}`;
+  - var bootstrapVersion = '5.1';
+  - var attrsMain = { id: 'top', class: 'main' };
+  - var attrsLayout = { class: 'container', 'data-layout': 'container' }
+  - var colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark'];
+  - var grays = ['black', 1100, 1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 'white'];
+  - var colorsAll = colors.concat(grays);
+
+  - var footer = true;
+  - var pathName = (locals.filename || locals.history[0]).split('\\').join('/').split('src/pug/').pop().split('.pug').shift();
+  - var pageTree = pathName.split('/');
+  - var CWD = pageTree.slice(1).map(() => '../').join('');
+  
+  -
+    var sitemap = 
+      {
+        clubs: [
+          {
+            title: '회원 정기 행사',
+            link: 'default',
+            isActive: true,
+          },
+          {
+            title: '회원관리',
+            link: 'default',
+            isActive: true,
+          },
+          {
+            title: '고객센터',
+            link: 'default',
+            isActive: true,
+          },
+      ],
+
+      travel: [
+                  {
+            title: 'Tours',
+            link: 'about',
+            isActive: true,
+          },
+          {
+            title: '쇼 & 이벤트',
+            link: 'about',
+            isActive: true,
+          },
+          {
+            title: '호텔 & 숙박',
+            link: 'about',
+            isActive: true,
+          },
+          {
+            title: '엑티비티 & 관광지',
+            link: 'about',
+            isActive: true,
+          },
+          {
+            title: '렌트 & 교통',
+            link: 'about',
+            isActive: true,
+          },
+          {
+            title: '레스토랑 & 맛집',
+            link: 'about',
+            isActive: true,
+          },
+          {
+            title: '쇼핑',
+            link: 'about',
+            isActive: true,
+          },
+      ],
+
+      company: {
+        introduce: [
+          {
+            title: 'Its Tours',
+            link: 'cards',
+            isActive: true
+          },
+          {
+            title: 'Its Club',
+            link: 'cards',
+            isActive: true
+          },
+          {
+            title: 'CI/BI',
+            link: 'cards',
+            isActive: true
+          },
+          {
+            title: '찾아오시는길',
+            link: 'cards',
+            isActive: true
+          },
+        ],
+        business: [
+                    {
+            title: '사업소개',
+            link: 'cards',
+            isActive: true
+          },
+          {
+            title: 'G-Alliance',
+            link: 'cards',
+            isActive: true
+          },
+          {
+            title: '파트너',
+            link: 'cards',
+            isActive: true
+          },
+          {
+            title: '회원 이용 약관',
+            link: 'cards',
+            isActive: true
+          },
+          {
+            title: '공지사항',
+            link: 'cards',
+            isActive: true
+          },
+        ],
+        incrute: [
+                    {
+            title: '인재상',
+            link: 'cards',
+            isActive: true
+          },
+          {
+            title: '채용공고',
+            link: 'cards',
+            isActive: true
+          },
+        ],
+      },
+
+      documentation: [
+        {
+          title: 'getting-started',
+          title: 'getting-started',
+          isActive: true,
+        },
+        {
+          title: 'file-structure',
+          title: 'file-structure',
+          isActive: true,
+        },
+        {
+          title: 'customization',
+          title: 'customization',
+          isActive: true,
+        },
+        {
+          title: 'gulp',
+          isActive: true,
+        },
+        {
+          title: 'RTL',
+          isActive: true,
+        },
+        {
+          title: 'plugins',
+          isActive: true,
+        },
+        {
+          title: 'changelog',
+          isActive: true,
+        },
+      ]
+
+    };
+    
+

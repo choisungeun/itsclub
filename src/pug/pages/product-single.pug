@@ -1,0 +1,11 @@
+
+extends ../layouts/LayoutTheme
+include ../mixins/pages/ProductSingle
+
+block beforeMainContent
+  +FancyNav(false, false, 'bg-black')
+
+append mainContent  
+  +SingleProductDemo
+  +TopProducts
+

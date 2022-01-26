@@ -1,0 +1,72 @@
+//---------------------------------------
+  |  Arrow Down
+//---------------------------------------
+mixin DownArrow(delay, offset, borderColor)
+  a.indicator.indicator-down(data-zanim-timeline!={delay: delay} data-zanim-trigger='scroll' href='#target-down'  data-offset=offset)
+    span.indicator-arrow.indicator-arrow-one(class=borderColor? `border-${borderColor}` : false data-zanim-xs!={
+      from: {opacity: 0, y: 15},
+      to: {opacity: 1, y: -5, scale: 1},
+      ease: "Back.easeOut",
+      duration: 0.4,
+      delay: 0.25
+    })
+    span.indicator-arrow.indicator-arrow-two(class=borderColor? `border-${borderColor}` : false data-zanim-xs!={
+      from: {opacity: 0, y: 15},
+      to: {opacity: 1, y: -5, scale: 1},
+      ease: "Back.easeOut",
+      duration: 0.4,
+      delay: 0.5
+    })
+
+//---------------------------------------
+  |  Language Modal
+//---------------------------------------
+mixin LanguageModal
+  #languageModal.modal.fade.fade-in(tabindex='-1' role='dialog' aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-xs.mx-auto(role='document')
+      .modal-content.bg-black
+        .modal-body.text-center.p-0
+          button.btn-close.text-white.position-absolute.top-0.end-0.times-icon.mt-2.me-2.p-0(type='button' data-bs-dismiss='modal' aria-label='Close')
+
+          ul.list-unstyled.my-0.py-4.font-sans-serif
+            li
+              a(href=`${CWD}homes/default.html` class=`${attrsHtml.dir === 'ltr' ? 'text-white fw-bold' : 'text-500' }`).pt-1.d-block English
+            li
+              a(href='#!').pt-1.d-block.text-500 Français
+            li
+              a(href=`${CWD}pages/rtl.html` class=`${attrsHtml.dir === 'rtl' ? 'text-white fw-bold' : 'text-500' }`).pt-1.d-block عربى
+            li
+              a(href='#!').pt-1.d-block.text-500 Deutsche
+
+//---------------------------------------
+  |  Privacy Policy Modal
+//---------------------------------------
+mixin PrivacyPolicyModal
+  #privacyPolicyModal.modal.fade.fade-in(tabindex='-1' role='dialog' aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-lg.mx-auto(role='document')
+      .modal-content
+        .modal-header
+          h4.modal-title.text-900
+            | 개인정보 이용, 제공, 활용 관리 동의서
+          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+        .modal-body
+          p
+            | (주) 잇츠투어스 유료회원 "잇츠클럽(It's Club)" 회원님의 개인정보 수집 및 활용에 대해 정보수집, 이용, 제공, 활용 동의서를 받고 있습니다.
+            | 여행을 위해 여행에 제반된 회원을 위한 서비스 이용에 관한 항목에 제안된 범위에서만 활용됩니다.
+            | 개인 정보의 이용을 거부하고자 할 때에는 개인 정보 관리 책임자를 통해 열람, 정정, 삭제를 요구 할 수 있습니다.
+
+//---------------------------------------
+  |  informationTerms Modal
+//---------------------------------------
+mixin InformationTermsModal
+  #informationTermsModal.modal.fade.fade-in(tabindex='-1' role='dialog' aria-hidden='true')
+    .modal-dialog.modal-dialog-centered.modal-lg.mx-auto(role='document')
+      .modal-content
+        .modal-header
+          h4.modal-title.text-900
+            | 개인정보 제3자 제공 및 동의 안내
+          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+        .modal-body
+          p
+            | 여행을 위해 항공권 및 교통, 회원을 위한 다양한 보헙등 혜택을 제공하기 위해 제휴사측에 이름, 휴대폰번호, 주소를 제공하며, 종료시 즉시 파기합니다.
+            | 제 3자 제공에 대한 동의를 거부할 수 있으며, 이 경우 여행 참여가 제한됩니다.
