@@ -92,7 +92,7 @@ mixin FancyNav(item, menu, cls, notExclusive, navClass)
                 .col-auto
                   each item in sitemap.travel
                     +NavLink(item, 'pages/')
-                    
+
           li.fancynav-item.fancy-dropdown
             a(href='JavaScript:void(0)').fancynav-link.fancy-dropdown-toggle
               span.fancynav-link-content Company
@@ -100,15 +100,15 @@ mixin FancyNav(item, menu, cls, notExclusive, navClass)
               .row.pb-2.pt-3
                 .col-sm-auto.pe-3.mb-3
                   a(href='JavaScript:void(0)').fancy-dropdown-item.text-white.fw-black.ls.text-uppercase.fs--1.mb-1 회사소개
-                  each item, index in sitemap.company.introduce
+                  each item in sitemap.company.introduce
                     +NavLink(item,'components/bootstrap/')                  
                 .col-sm-auto.pe-3.mb-3
                   a(href='JavaScript:void(0)').fancy-dropdown-item.text-white.fw-black.ls.text-uppercase.fs--1.mb-1 비즈니스
-                  each item, index in sitemap.company.business
+                  each item in sitemap.company.business
                     +NavLink(item, 'components/bootstrap/')
                 .col-sm-auto.pe-3.mb-3
                   a(href='JavaScript:void(0)').fancy-dropdown-item.text-white.fw-black.ls.text-uppercase.fs--1.mb-1 인재채용
-                  each item, index in sitemap.company.incrute
+                  each item in sitemap.company.incrute
                     +NavLink(item, 'components/bootstrap/')
 
       else

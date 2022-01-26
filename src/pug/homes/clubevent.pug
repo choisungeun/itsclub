@@ -1,0 +1,101 @@
+extends ../layouts/LayoutTheme
+include ../mixins/homes/Clubevent
+
+prepend styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/calendar/calendar-style.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/calendar/core/main.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/calendar/daygrid/main.css`, rel='stylesheet')
+  link(href=`${CWD}vendors/calendar/fonts/icomoon/style.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+  script(src=`${CWD}vendors/rellax/rellax.min.js`) 
+  script(src=`${CWD}vendors/calendar/core/main.js`) 
+  script(src=`${CWD}vendors/calendar/interaction/main.js`) 
+  script(src=`${CWD}vendors/calendar/daygrid/main.js`) 
+  script(src=`${CWD}vendors/calendar/timegrid/main.js`) 
+  script(src=`${CWD}vendors/calendar/list/main.js`)  
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+        height: 'parent',
+        locale: 'KO',
+        themeSystem: 'bootstrap',
+        header: {
+          left: 'prevYear,prev,next,nextYear today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        },
+        defaultView: 'dayGridMonth',
+        defaultDate: '2022-02-12',
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: [
+          {
+            title: 'All Day Event',
+            start: '2022-02-01',
+          },
+          {
+            title: 'Long Event',
+            start: '2022-01-26',
+            end: '2022-02-10'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2022-02-09T16:00:00'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2022-02-16T16:00:00'
+          },
+          {
+            title: 'Conference',
+            start: '2022-02-11',
+            end: '2022-02-13'
+          },
+          {
+            title: 'Meeting',
+            start: '2022-02-12T10:30:00',
+            end: '2022-02-12T12:30:00'
+          },
+          {
+            title: 'Lunch',
+            start: '2022-02-12T12:00:00'
+          },
+          {
+            title: 'Meeting',
+            start: '2022-02-12T14:30:00'
+          },
+          {
+            title: 'Happy Hour',
+            start: '2022-02-12T17:30:00'
+          },
+          {
+            title: 'Dinner',
+            start: '2022-02-12T20:00:00'
+          },
+          {
+            title: 'Birthday Party',
+            start: '2022-02-13T07:00:00'
+          },
+          {
+            title: 'Click for Google',
+            url: 'http://google.com/',
+            start: '2022-02-28'
+          }
+        ]
+      });
+
+      calendar.render();
+    });
+
+
+append mainContent
+  +ClubEventHeader
