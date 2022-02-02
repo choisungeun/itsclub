@@ -1,0 +1,17 @@
+mixin ClubMemberList
+  +Section#ClubMemberList
+    h2 #{data}
+    table.table.table-hover
+      thead
+        tr
+          th(scope="col") #
+          th(scope="col") First
+          th(scope="col") Last
+          th(scope="col") Handle
+      tbody
+        for person in personList
+          tr
+            th(scope="row") #{person.ai_key}
+            td #{person.fist}
+            td #{person.last}
+            td #{person.email}

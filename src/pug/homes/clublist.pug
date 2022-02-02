@@ -1,15 +1,12 @@
 extends ../layouts/LayoutTheme
-include ../mixins/homes/Clubevent
+include ../mixins/homes/Clublist
 
 prepend styles
   link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
-  link(href=`${CWD}vendors/calendar/main.css`, rel='stylesheet')
 
 prepend scripts
   script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
   script(src=`${CWD}vendors/rellax/rellax.min.js`) 
-  script(src=`${CWD}vendors/calendar/main.js`) 
-  script(src=`${CWD}vendors/calendar/calendar.js`) 
 
 append mainContent
-  +ClubEventHeader
+  +ClubMemberList

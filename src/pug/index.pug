@@ -1,6 +1,5 @@
 extends layouts/LayoutTheme
-include ./mixins/homes/Default.pug
-include ./mixins/homes/Bicycle.pug
+include ./mixins/homes/Index.pug
 
 prepend styles
   link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
@@ -25,7 +24,7 @@ prepend scripts
 //-   })(data-onscroll-fade-in=false)
 
 append mainContent
-  +BicycleHeader
+  +IndexHeader
   +DefaultWhyUs
   +DefaultVideo
   +DefaultServices

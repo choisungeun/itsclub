@@ -16,7 +16,7 @@
       "src/js/**/!(utils | detector | node)*.js",
       "!src/js/theme.js",
       "src/js/theme.js"
-    ], 
+    ],
     "dest": "assets/js"
   },
   "pug": {
@@ -49,5 +49,10 @@
       "vendors.json"
     ]
   },
-  "watch": ["assets/img", "assets/data", "assets/video", "vendors"]
+  "watch": [
+    "assets/img",
+    "assets/data",
+    "assets/video",
+    "vendors"
+  ]
 }

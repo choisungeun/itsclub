@@ -5,7 +5,7 @@ module.exports = function (app, bodyParser) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
-  app.get("/", function (req, res) {
+  app.get("/", function (req, res, next) {
     console.log("root");
     res.render("index");
   });
