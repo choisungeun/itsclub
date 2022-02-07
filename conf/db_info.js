@@ -23,7 +23,8 @@ var dbconnInfo = {
 var dbconnection = {
   init: function () {
     var hostname = os.hostname();
-    if (hostname === "SUNSAMSUNG") {
+    console.log(hostname);
+    if (hostname === "SUNSAMSUNG" || hostname === "DESKTOP-0IAP0QC") {
       return mysql.createConnection(dbconnInfo.dev); //로컬개발환경
     } else {
       return mysql.createConnection(dbconnInfo.real); //cafe24 서버환경

@@ -4,7 +4,6 @@ var dbconn = dbConObj.init();
 var clubList = {
   //클럽목록
   list: function (req, res, next) {
-    var personList = [];
     var sql = "select * from club"; // 클럽목록
     dbConObj.dbopen(dbconn);
     dbconn.query(sql, function (err, results, fields) {

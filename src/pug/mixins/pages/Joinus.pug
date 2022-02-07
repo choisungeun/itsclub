@@ -31,14 +31,23 @@ mixin Joinus
 
     +Service(false, '회원 가입 안내', '잇츠투어스 잇츠클럽 회원이 되어 주셔서 감사합니다. 아래 동의서와 신청서를 작성해 주시기 바랍니다. 아래의 신청서 내용은 당사 회원 서비스를 위한 목적으로만 사용됩니다.')
 
-    form.needs-validation.mt-5(novalidate)
+    form.needs-validation.mt-5(novalidate, method='post')
       .row.gy-4.align-items-center.mb-4
         .col-12
+          label(for='userid') 로그인 ID
+          input.form-control.bg-light(type='text', placeholder='ID', name='id', required='', value='test')
+          .invalid-feedback
+            | 필수 입력값입니다.
+        .col-12
           label(for='koreanNameInput') 회원 한글명
-          input.form-control.bg-light(type='text', placeholder='한글 이름')
+          input.form-control.bg-light(type='text', placeholder='한글 이름', name='koreanName', required='', value='테스트 이름')
+          .invalid-feedback
+            | 필수 입력값입니다.          
         .col-12
           label(for='englishNameInput') 회원 영문명
-          input.form-control.bg-light(type='text', placeholder='영문 이름')        
+          input.form-control.bg-light(type='text', placeholder='영문 이름', name='englishName', required='', value='test Name')
+          .invalid-feedback
+            | 필수 입력값입니다.          
         .col-12
           label(for='englishNameInput') 성별
           .row.gy-2.align-items-center
@@ -52,7 +61,9 @@ mixin Joinus
                 | 여
         .col-12
           label(for='englishNameInput') 주민등록번호 *
-          input.form-control.bg-light(type='text', placeholder='811001-1234567')
+          input.form-control.bg-light(type='text', placeholder='811001-1234567', name='personalNumber', value='811001-1234567', required='')
+          .invalid-feedback
+            | 필수 입력값입니다.          
         .col-12
           label(for='englishNameInput') 휴대폰 통신사
           .row.gy-4.align-items-center
@@ -74,21 +85,23 @@ mixin Joinus
                 | 알뜰폰
         .col-6
           label(for='englishNameInput') 연락처          
-          input.form-control.bg-light.form-control-sm(type='tel', placeholder='010', pattern="[0-9]+")
+          input.form-control.bg-light.form-control-sm(type='tel', placeholder='', pattern="[0-9]+", name='phoneNumber', value='0101234567', required='')
           small.form-text.text-muted 숫자만 입력해 주세요.
+          .invalid-feedback
+            | 필수 입력값입니다. 숫자만 입력해 주세요.     
         .col-12
           label(for='englishNameInput') 이메일 주소
-          input.form-control.bg-light(type='email', placeholder='Email Address', required='')
+          input.form-control.bg-light(type='email', placeholder='Email Address', name='emailAddress', value='test@test.com', required='')
           .invalid-feedback
             | Please provide a valid email.
         .col-12
           label(for='englishNameInput') 회원 주소
           .row.gy-2.align-items-center
             .col-6
-              input#postNumber.form-control.bg-light(type='text', required='')
+              input#postNumber.form-control.bg-light(type='text', required='', name='postNumber', value='19964')
             .col-3
               input#postNumberSearch.btn.btn-light(type='button', name='search', value='우편번호검색', onclick='kakaopost()')
-          input#detailAddress.form-control.bg-light.mt-1(type='text', required='')
+          input#detailAddress.form-control.bg-light.mt-1(type='text', name='detailAddress', value='test addr', required='')
           .invalid-feedback
             | Please provide a valid email.
         .col-12
@@ -116,21 +129,20 @@ mixin Joinus
         })
           .col-12.isotope-item.premium
             label(for='englishNameInput') 회원소유 은행명
-            select#exampleFormControlSelect1.form-control
-              option(selected='', disabled='', value="") 은행을 선택해주세요.
-              option 국민은행
-              option 하나은행
-              option 기업은행
-              option 농협
+            select#bankSelect.form-control(name='bank', required='')              
+              option(selected='', value='kb') 국민은행
+              option(value='ha') 하나은행
+              option(value='ki') 기업은행
+              option(value='nh') 농협
             small.form-text.text-danger
               | ※ 유료회원
             small.form-text.text-muted
               | 만 입력하는 란입니다.
             .invalid-feedback
-              | Please provide a valid email.
+              | 필수 입력 값입니다.
           .col-12.isotope-item.premium
             label(for='englishNameInput') 회원 은행계좌번호
-            input.form-control.bg-light(type='text', placeholder='130-151-500681', required)
+            input.form-control.bg-light(type='text', placeholder='130-151-500681', name='bankAccout', value='130-151-500681', required)
             small.form-text.text-danger
               | ※ 유료회원
             small.form-text.text-muted
@@ -138,7 +150,7 @@ mixin Joinus
             small.form-text.text-danger
               | 본인 명의 계좌번호만 인정됩니다.
             .invalid-feedback
-              | Please provide a valid email.
+              | 필수 입력 값입니다.
           .col-12.isotope-item.premium
             label(for='englishNameInput') 회원비 결제일 선택
             .row.gy-4.align-items-center
@@ -163,23 +175,21 @@ mixin Joinus
             small.form-text.text-muted
               | 여행 수입은 매월 1일부터 말일까지를 익월 21일에 정산(송금)됩니다.
             .invalid-feedback
-              | Please provide a valid email.
+              | 필수 입력 값입니다.
         .col-12
           label(for='englishNameInput') 잇츠클럽(It's Club) 소개자 성명
-          input.form-control.bg-light(type='email', required='')
+          input.form-control.bg-light(type='text', name='inviterName', value='test inviter')
           small.form-text.text-muted
-            | 어떤분을 통해 잇츠클럽(It's Club)을 소개 받으셨습니까? 그분의 성함 또는 닉네임을 기록해 주십시오.
-          .invalid-feedback
-            | Please provide a valid email.            
+            | 어떤분을 통해 잇츠클럽(It's Club)을 소개 받으셨습니까? 그분의 성함 또는 닉네임을 기록해 주십시오. 
         .col-md-6
           label(for='englishNameInput') 비밀번호
-          input.form-control.bg-light(type='password', placeholder='Password')
+          input.form-control.bg-light(type='password', placeholder='Password', name='passwd', value='asdf', required='')
         .col-md-6
           label(for='englishNameInput') 비밀번호 확인
-          input.form-control.bg-light(type='password', placeholder='Confirmation')        
+          input.form-control.bg-light(type='password', placeholder='Confirmation', value='asdf', required='')        
         .col-12
           .form-check            
-            input#privatePolicy.form-check-input(type='checkbox', value='', required='')
+            input#privatePolicy.form-check-input(type='checkbox', value='', required='', checked)
             label.form-check-label(for='privatePolicyLabel') 
               | 개인정보 이용, 제공, 활용 관리 동의 안내
               a(href='#privacyPolicyModal', data-bs-toggle='modal').text-black (동의서 전문보기)
@@ -187,7 +197,7 @@ mixin Joinus
               | You must agree before submitting.
         .col-12
           .form-check            
-            input#informationTerms.form-check-input(type='checkbox', value='', required='')
+            input#informationTerms.form-check-input(type='checkbox', value='', required='', checked)
             label.form-check-label(for='informationTermsLabel') 
               | 개인정보 제3자 제공 및 동의 안내
               a(href='#informationTermsModal', data-bs-toggle='modal').text-black (동의서 전문보기)
@@ -196,7 +206,7 @@ mixin Joinus
 
       .row.mb-4.align-items-center   
         .col-auto.d-grid
-          input.btn.btn-dark(type='submit', name='submit', value='Create an Account')
+          input.btn.btn-dark(type='submit', value='Create an Account')
 
         .col-sm
           p.fs--1.text-700.mb-0.font-sans-serif.mt-2.mt-lg-0

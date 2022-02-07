@@ -16,5 +16,9 @@ router.get("/joinus.html", function (req, res, next) {
   joinUs.get(req, res, next);
 });
 
+router.post("/joinus.html", function (req, res, next) {
+  joinUs.join(req, res, next);
+});
+
 //모듈에 등록해야 web.js에서 app.use 함수를 통해서 사용 가능
 module.exports = router;

@@ -2,12 +2,15 @@
 var express = require("express");
 var app = express();
 var logger = require("morgan");
+var bodyParser = require("body-parser");
 
 //express 서버 포트 설정(cafe24 호스팅 서버는 8001 포트 사용)
-app.use(logger("dev"));
+// app.use(logger("dev"));
 app.set("views", `${__dirname}/src/pug`);
 app.set("view engine", "pug");
 app.use("/", express.static(`${__dirname}/public`));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function (req, res, next) {
   console.log("Time:", Date.now());

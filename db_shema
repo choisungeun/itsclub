@@ -1,0 +1,37 @@
+create user 'itsclub'@'localhost' identified by 'asdflkjlkj1!'; 
+SELECT user,authentication_string,plugin,host FROM mysql.user; 
+
+GRANT ALL PRIVILEGES ON *.* TO 'itsclub'@'localhost'; 
+GRANT GRANT OPTION ON *.* TO 'itsclub'@'localhost'; 
+
+flush privileges;
+
+ALTER USER 'itsclub'@'localhost' IDENTIFIED WITH mysql_native_password BY 'asdflkjlkj1!';
+
+delete from club;
+select * from club;
+
+insert into club (id, koreanName, emailAddress, englishName) values('te00','st','a1@mail.com', 'en');
+insert into club (id, koreanName, emailAddress, englishName) values('te11','st','a2@mail.com', 'en');
+insert into club (id, koreanName, emailAddress, englishName) values('te22','st','a3@mail.com', 'en');
+insert into club (id, koreanName, emailAddress, englishName) values('te33','st','a4@mail.com', 'en');
+
+CREATE TABLE `club` (
+  `id` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `koreanName` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `englishName` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `gender` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `personalNumber` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mobile` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `phoneNumber` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `emailAddress` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `postNumber` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `detailAddress` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `membertype` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `bank` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `bankAccout` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `payday` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `inviterName` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  `passwd` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;

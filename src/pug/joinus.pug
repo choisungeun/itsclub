@@ -1,18 +1,18 @@
 extends layouts/LayoutSplitRight
 include ./mixins/pages/Joinus.pug
 
-block beforeMainContent
-  +FancyNav(false, 
-  {    
-    "클럽 정기행사": "./index.html#defaultWhyUs",
-    "공연 쇼 이벤트": "./index.html#defaultServices",
-    "컨시어지 숙박 호텔": "./index.html#defaultProgressbar",
-    "관광지 엑티비티": "./index.html#defaultPricingPlan",
-    "레스토랑 맛집": "./index.html#defaultMembers",
-    "교통 렌트": "./index.html#defaultGallery",
-    "쇼핑": "./index.html#defaultGallery",
-    "회원가입": "./joinus.html"
-  })(data-onscroll-fade-in=false)
+//- block beforeMainContent
+//-   +FancyNav(false, 
+//-   {    
+//-     "클럽 정기행사": "./index.html#defaultWhyUs",
+//-     "공연 쇼 이벤트": "./index.html#defaultServices",
+//-     "컨시어지 숙박 호텔": "./index.html#defaultProgressbar",
+//-     "관광지 엑티비티": "./index.html#defaultPricingPlan",
+//-     "레스토랑 맛집": "./index.html#defaultMembers",
+//-     "교통 렌트": "./index.html#defaultGallery",
+//-     "쇼핑": "./index.html#defaultGallery",
+//-     "회원가입": "./joinus.html"
+//-   })(data-onscroll-fade-in=false)
 
 append variables
   - var bg = 'signup';

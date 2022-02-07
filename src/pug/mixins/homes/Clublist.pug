@@ -11,7 +11,7 @@ mixin ClubMemberList
       tbody
         for person in personList
           tr
-            th(scope="row") #{person.ai_key}
-            td #{person.fist}
-            td #{person.last}
-            td #{person.email}
+            th(scope="row") #{person.id}
+            td #{person.koreanName}
+            td #{person.englishName}
+            td #{person.emailAddress}
