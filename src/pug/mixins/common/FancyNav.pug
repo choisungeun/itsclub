@@ -63,6 +63,8 @@ mixin FancyNav(item, menu, cls, notExclusive, navClass)
         duration: 0.8,
         delay: 0.4
       } data-zanim-trigger='scroll')
+        a(href=`${CWD}pages/singin.html`).fancynavbar-addon-item
+          span.font-sans-serif.ls.fw-black.fs--1.d-block Log In
         a(href='#!').fancynavbar-addon-item
           span.fab.fa-twitter
         a(href='#languageModal', data-bs-toggle='modal').fancynavbar-addon-item

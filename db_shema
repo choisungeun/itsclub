@@ -8,14 +8,6 @@ flush privileges;
 
 ALTER USER 'itsclub'@'localhost' IDENTIFIED WITH mysql_native_password BY 'asdflkjlkj1!';
 
-delete from club;
-select * from club;
-
-insert into club (id, koreanName, emailAddress, englishName) values('te00','st','a1@mail.com', 'en');
-insert into club (id, koreanName, emailAddress, englishName) values('te11','st','a2@mail.com', 'en');
-insert into club (id, koreanName, emailAddress, englishName) values('te22','st','a3@mail.com', 'en');
-insert into club (id, koreanName, emailAddress, englishName) values('te33','st','a4@mail.com', 'en');
-
 CREATE TABLE `club` (
   `id` varchar(20) COLLATE utf8mb4_bin NOT NULL,
   `koreanName` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
@@ -35,3 +27,56 @@ CREATE TABLE `club` (
   `passwd` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+CREATE TABLE `bank_list` (
+  `code` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+delete from club;
+select * from club;
+
+insert into club (id, koreanName, emailAddress, englishName) values('te00','st','a1@mail.com', 'en');
+insert into club (id, koreanName, emailAddress, englishName) values('te11','st','a2@mail.com', 'en');
+insert into club (id, koreanName, emailAddress, englishName) values('te22','st','a3@mail.com', 'en');
+insert into club (id, koreanName, emailAddress, englishName) values('te33','st','a4@mail.com', 'en');
+
+insert into bank_list values ('004','KB국민은행');
+insert into bank_list values ('088','신한은행');
+insert into bank_list values ('020','우리은행');
+insert into bank_list values ('081','하나은행');
+insert into bank_list values ('089','케이뱅크');
+insert into bank_list values ('090','카카오뱅크');
+insert into bank_list values ('092','토스뱅크');
+insert into bank_list values ('003','중소기업은행');
+insert into bank_list values ('011','NH농협은행');
+insert into bank_list values ('007','수협은행');
+insert into bank_list values ('031','대구은행');
+insert into bank_list values ('032','부산은행');
+insert into bank_list values ('039','경남은행');
+insert into bank_list values ('034','광주은행');
+insert into bank_list values ('037','전북은행');
+insert into bank_list values ('035','제주은행');
+insert into bank_list values ('023','한국스탠다드차타드은행');
+insert into bank_list values ('027','한국씨티은행');
+insert into bank_list values ('012','농협');
+insert into bank_list values ('064','산림조합');
+insert into bank_list values ('045','새마을금고');
+insert into bank_list values ('048','신협');
+insert into bank_list values ('071','우정사업본부(우체국)');
+insert into bank_list values ('050','상호저축은행');
+insert into bank_list values ('052','모건 스탠리');
+insert into bank_list values ('055','도이체방크');
+insert into bank_list values ('057','JP모건 체이스');
+insert into bank_list values ('058','미즈호은행');
+insert into bank_list values ('059','미쓰비시UFJ은행');
+insert into bank_list values ('060','뱅크 오브 아메리카');
+insert into bank_list values ('061','BNP파리바');
+insert into bank_list values ('062','중국공상은행');
+insert into bank_list values ('063','중국은행');
+insert into bank_list values ('066','중국교통은행');
+insert into bank_list values ('067','중국건설은행');
+

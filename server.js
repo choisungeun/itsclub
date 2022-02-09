@@ -28,7 +28,9 @@ app.listen(8000, () => {
 //라우팅 모듈 선언
 var indexRouter = require("./routes/index");
 var homesRouter = require("./routes/homes");
+var pagesRouter = require("./routes/pages");
 
 //request 요청 URL과 처리 로직을 선언한 라우팅 모듈 매핑
 app.use("/", indexRouter);
 app.use("/homes", homesRouter); //클럽
+app.use("/pages", pagesRouter); //클럽

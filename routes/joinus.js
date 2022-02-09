@@ -1,27 +1,30 @@
 var dbConObj = require("../conf/db_info"); //사용자 정의한 함수 사용
 var dbconn = dbConObj.init();
+const bcrypt = require("bcryptjs");
 
 var joinUs = {
   //클럽목록
   get: function (req, res, next) {
     console.log("Get joinUs");
-    res.render("joinus");
+    var sql = "select * from bank_list"; // 은행목록
+    dbConObj.dbopen(dbconn);
+    dbconn.query(sql, function (err, results, fields) {
+      if (err) {
+        res
+          .status(500)
+          .json({ status_code: 500, status_message: "internal server error" });
+      } else {
+        // Render index.pug page using array
+        res.render("joinus", {
+          bankList: results,
+        });
+      }
+    });
   },
   join: function (req, res, next) {
     console.log("joinUs");
-    // console.log(req.body);
 
-    const jsonObj = req.body;
-    console.log(jsonObj);
-    const responseJson = JSON.stringify(req.body);
-    // console.log(responseJson);
-
-    var post = Object.keys(jsonObj).map(function (index) {
-      var obj = jsonObj[index];
-      return Object.keys(obj).map(function (val) {
-        return obj[val];
-      });
-    });
+    var crypt_passwd = bcrypt.hashSync(req.body.passwd);
 
     // var sql = "INSERT INTO club VALUES (?)";
     var sql =
@@ -57,7 +60,7 @@ var joinUs = {
       "','" +
       req.body.inviterName +
       "','" +
-      req.body.passwd +
+      crypt_passwd +
       "')"; // 클럽목록
 
     dbConObj.dbopen(dbconn);
@@ -70,7 +73,7 @@ var joinUs = {
           .json({ status_code: 500, status_message: "internal server error" });
       } else {
         // Render index.pug page using array
-        res.render("joinus");
+        res.redirect("joinus.html");
       }
     });
   },

@@ -23,7 +23,7 @@ var dbconnInfo = {
 var dbconnection = {
   init: function () {
     var hostname = os.hostname();
-    console.log(hostname);
+
     if (hostname === "SUNSAMSUNG" || hostname === "DESKTOP-0IAP0QC") {
       return mysql.createConnection(dbconnInfo.dev); //로컬개발환경
     } else {

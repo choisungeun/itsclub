@@ -53,11 +53,11 @@ mixin Joinus
           .row.gy-2.align-items-center
             .col-6
               input#genderMan.form-check-input(type='radio', name='gender', value='man', checked='')
-              label.form-check-label(for='man')
+              label.mx-2.form-check-label(for='man')
                 | 남          
             .col-6
               input#genderWoman.form-check-input(type='radio', name='gender', value='woman')
-              label.form-check-label(for='woman')
+              label.mx-2.form-check-label(for='woman')
                 | 여
         .col-12
           label(for='englishNameInput') 주민등록번호 *
@@ -69,26 +69,26 @@ mixin Joinus
           .row.gy-4.align-items-center
             .col-3
               input#mobileKT.form-check-input(type='radio', name='mobile', value='kt', checked='')
-              label.form-check-label(for='sk')
+              label.mx-2.form-check-label(for='sk')
                 | SK
             .col-3
               input#mobileSK.form-check-input(type='radio', name='mobile', value='sk')
-              label.form-check-label(for='kt')
+              label.mx-2.form-check-label(for='kt')
                 | KT
             .col-3
               input#mobileLG.form-check-input(type='radio', name='mobile', value='lgu')
-              label.form-check-label(for='lgu')
+              label.mx-2.form-check-label(for='lgu')
                 | LGU+
             .col-3
               input#mobileETC.form-check-input(type='radio', name='mobile', value='etc')
-              label.form-check-label(for='etc')
+              label.mx-2.form-check-label(for='etc')
                 | 알뜰폰
         .col-6
-          label(for='englishNameInput') 연락처          
+          label(for='englishNameInput') 연락처
           input.form-control.bg-light.form-control-sm(type='tel', placeholder='', pattern="[0-9]+", name='phoneNumber', value='0101234567', required='')
           small.form-text.text-muted 숫자만 입력해 주세요.
           .invalid-feedback
-            | 필수 입력값입니다. 숫자만 입력해 주세요.     
+            | 필수 입력값입니다. 숫자만 입력해 주세요.
         .col-12
           label(for='englishNameInput') 이메일 주소
           input.form-control.bg-light(type='email', placeholder='Email Address', name='emailAddress', value='test@test.com', required='')
@@ -109,11 +109,11 @@ mixin Joinus
           .row.gy-2.align-items-center(data-filter-nav)
             .col-6
               input#premiumMember.form-check-input(type='radio', name='membertype', value='premium', checked='', data-filter='.premium')
-              label.form-check-label(for='premium')
+              label.mx-2.form-check-label(for='premium')
                 | 프리미엄 유료회원(수익성 회원)
             .col-6
               input#generalMember.form-check-input(type='radio', name='membertype', value='general', data-filter='.general')
-              label.form-check-label(for='general')
+              label.mx-2.form-check-label(for='general')
                 | 일반 회원
           small.form-text.text-danger 
             | 유료회원
@@ -129,11 +129,9 @@ mixin Joinus
         })
           .col-12.isotope-item.premium
             label(for='englishNameInput') 회원소유 은행명
-            select#bankSelect.form-control(name='bank', required='')              
-              option(selected='', value='kb') 국민은행
-              option(value='ha') 하나은행
-              option(value='ki') 기업은행
-              option(value='nh') 농협
+            select#bankSelect.form-control(name='bank', required='')
+              for bank in bankList
+                option(value=bank.code) #{bank.name}
             small.form-text.text-danger
               | ※ 유료회원
             small.form-text.text-muted
@@ -156,19 +154,19 @@ mixin Joinus
             .row.gy-4.align-items-center
               .col-3
                 input#dayone.form-check-input(type='radio', name='payday', value='dayone', checked='')
-                label.form-check-label(for='sk')
+                label.mx-2.form-check-label(for='sk')
                   | 1일
               .col-3
                 input#dayfive.form-check-input(type='radio', name='payday', value='dayfive')
-                label.form-check-label(for='kt')
+                label.mx-2.form-check-label(for='kt')
                   | 5일
               .col-3
                 input#dayfifteen.form-check-input(type='radio', name='payday', value='dayfifteen')
-                label.form-check-label(for='lgu')
+                label.mx-2.form-check-label(for='lgu')
                   | 15일
               .col-3
                 input#daytwenty.form-check-input(type='radio', name='payday', value='daytwenty')
-                label.form-check-label(for='etc')
+                label.mx-2.form-check-label(for='etc')
                   | 20일
             small.form-text.text-danger
               | ※ 유료회원만 입력합니다. 회원비를 아래의 매월 선택한 날짜에 출금 납부를 동의 합니다. 

@@ -9,11 +9,11 @@ mixin Signin
       | freelancers &amp; companies.
     h6.text-danger.mt-3 Specially crafted for the people who care about design.
 
-    form.mt-5
+    form.mt-5(novalidate, method='post')
       .mb-3
-        input.form-control.bg-light(type='email', placeholder='Email')
+        input.form-control.bg-light(type='text', name='id', placeholder='id')
       .mb-0
-        input.form-control.bg-light(type='password', placeholder='Password')
+        input.form-control.bg-light(type='password', name='password', placeholder='Password')
       .mb-3.d-grid
         button.btn.btn-dark.mt-3(type='submit', name='submit') sign in
       .mb-3.w-100.position-relative.text-center.mt-4
