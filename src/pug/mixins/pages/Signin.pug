@@ -16,6 +16,8 @@ mixin Signin
         input.form-control.bg-light(type='password', name='password', placeholder='Password')
       .mb-3.d-grid
         button.btn.btn-dark.mt-3(type='submit', name='submit') sign in
+      if(loginError) 
+        h6.text-danger.mt-3 #{loginError.reason}
       .mb-3.w-100.position-relative.text-center.mt-4
         hr.text-300
         .absolute-centered.px-3.font-sans-serif.fs--1.text-500 or sign-in with

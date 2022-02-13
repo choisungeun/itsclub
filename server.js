@@ -1,8 +1,21 @@
 //필요한 모듈 선언
-var express = require("express");
-var app = express();
-var logger = require("morgan");
-var bodyParser = require("body-parser");
+const express = require("express");
+const app = express();
+const logger = require("morgan");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const cookiePaser = require("cookie-parser");
+const passport = require("passport");
+const dotenv = require("dotenv");
+const passportConfig = require("./passport").config(passport);
+
+// require("./passport").config(passport);
+require("dotenv").config();
+
+//라우팅 모듈 선언
+const indexRouter = require("./routes/index");
+const homesRouter = require("./routes/homes");
+const pagesRouter = require("./routes/pages");
 
 //express 서버 포트 설정(cafe24 호스팅 서버는 8001 포트 사용)
 // app.use(logger("dev"));
@@ -11,9 +24,22 @@ app.set("view engine", "pug");
 app.use("/", express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cookiePaser(process.env.COOKIE_SECRET));
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.COOKIE_SECRET,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+    },
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(function (req, res, next) {
-  console.log("Time:", Date.now());
+  // console.log("Time:", Date.now());
   next();
 });
 
@@ -24,11 +50,6 @@ app.use(function (req, res, next) {
 app.listen(8000, () => {
   console.log("express Listen port 8000");
 });
-
-//라우팅 모듈 선언
-var indexRouter = require("./routes/index");
-var homesRouter = require("./routes/homes");
-var pagesRouter = require("./routes/pages");
 
 //request 요청 URL과 처리 로직을 선언한 라우팅 모듈 매핑
 app.use("/", indexRouter);
