@@ -9,7 +9,6 @@ const passport = require("passport");
 const dotenv = require("dotenv");
 const passportConfig = require("./passport").config(passport);
 
-// require("./passport").config(passport);
 require("dotenv").config();
 
 //라우팅 모듈 선언
@@ -18,7 +17,7 @@ const homesRouter = require("./routes/homes");
 const pagesRouter = require("./routes/pages");
 
 //express 서버 포트 설정(cafe24 호스팅 서버는 8001 포트 사용)
-// app.use(logger("dev"));
+app.use(logger("dev"));
 app.set("views", `${__dirname}/src/pug`);
 app.set("view engine", "pug");
 app.use("/", express.static(`${__dirname}/public`));
@@ -40,6 +39,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(function (req, res, next) {
   // console.log("Time:", Date.now());
+  console.log(req.isAuthenticated());
+  console.log(req.user);
+  res.locals.isLogin = false;
+  if (req.isAuthenticated() && req.user) {
+    res.locals.isLogin = true;
+  }
   next();
 });
 

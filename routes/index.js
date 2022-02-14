@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 var joinUs = require("./joinus"); //클럽목록
+var calendar = require("./calendarEvent"); //클럽목록
 
 //라우터의 get()함수를 이용해 request URL('/')에 대한 업무처리 로직 정의
 router.get("/", function (req, res, next) {
@@ -18,6 +19,15 @@ router.get("/joinus.html", function (req, res, next) {
 
 router.post("/joinus.html", function (req, res, next) {
   joinUs.join(req, res, next);
+});
+
+router.get("/logout", function (req, res, next) {
+  req.logOut();
+  res.redirect("index.html");
+});
+
+router.post("/calendar", function (req, res, next) {
+  calendar.get(req, res, next);
 });
 
 //모듈에 등록해야 web.js에서 app.use 함수를 통해서 사용 가능
