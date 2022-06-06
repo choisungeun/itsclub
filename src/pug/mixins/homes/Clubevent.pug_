@@ -1,0 +1,63 @@
+mixin ClubEventHeader
+  +Section#ClubEvent
+    .row.flex-center
+      .col-12.mb-2.mb-lg-5.text-center
+        h2.fs-3.fs-sm-4
+          span.text-decoration-underline(data-zanim-xs!={delay: 0.3} data-zanim-trigger='scroll') It's Club Schedule  
+
+    .container
+      .row.justify-content-center
+        .col-md-6.text-center.mb-5
+          h2.heading-section 행사일정
+      .row
+        .col-md-12
+          .content.w-100
+            .calendar-container
+              .calendar
+                .year-header
+                  span.left-button.fa.fa-chevron-left#prev
+                  span.year#label
+                  span.right-button.fa.fa-chevron-right#next
+                table.months-table.w-100
+                  tbody
+                    tr.months-row
+                      td.month Jan
+                      td.month Feb
+                      td.month Mar
+                      td.month Apr
+                      td.month May
+                      td.month Jun
+                      td.month Jul
+                      td.month Aug
+                      td.month Sep
+                      td.month Oct
+                      td.month Nov
+                      td.month Dec
+                table.days-table.w-100
+                  tbody
+                    tr
+                      td.day Sun
+                      td.day Mon
+                      td.day Tue
+                      td.day Wed
+                      td.day Thu
+                      td.day Fri
+                      td.day Sat
+                .frame
+                  table.dates-table.w-100
+                    tbody.tbody.
+                     
+                button.button#add-button Add Event
+            .events-container.
+              
+              
+            .dialog#dialog
+              h2.dialog-header Add New Event
+              form.form#form
+                .form-container(align='center')
+                  label.form-label#valueFromMyButton(for='name') Event name
+                  input.input#name(type='text' maxlength='36')
+                  label.form-label#valueFromMyButton(for='count') Number of people to invite
+                  input.input#count(type='number' min='0' max='1000000' maxlength='7')
+                  input.button#cancel-button(type='button' value='Cancel')
+                  input.button.button-white#ok-button(type='button' value='OK')

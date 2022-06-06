@@ -9,7 +9,7 @@ mixin ClubMemberList
           th(scope="col") Last
           th(scope="col") Handle
       tbody
-        for person in personList
+        for person in personList ? personList : []
           tr
             th(scope="row") #{person.id}
             td #{person.koreanName}

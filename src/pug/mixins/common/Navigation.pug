@@ -18,7 +18,7 @@ mixin Navigation
             a#navbarDropdownMenuLink1.nav-link.dropdown-toggle(href='#', data-bs-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Home
 
             ul.dropdown-menu.end-0.ms-auto(aria-labelledby='navbarDropdownMenuLink1')
-              each item in sitemap.home
+              each item in sitemap.home ? sitemap.home : []
                 li
                   +NavLinkBs(item, 'homes/')      
 

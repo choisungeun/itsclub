@@ -15,9 +15,12 @@ exports.config = (passport) => {
   });
   passport.use(
     new LocalStrategy(
-      { usernameField: "id", passwordField: "password" },
+      {
+        usernameField: "id",
+        passwordField: "password",
+      },
       (id, password, done) => {
-        var sql = "select id, passwd from club where id = ?"; // 유저검색
+        var sql = "select id, passwd, admin from club where id = ?"; // 유저검색
         dbConObj.dbopen(dbconn);
         dbconn.query(sql, id, function (err, results, fields) {
           if (err) {
@@ -30,8 +33,8 @@ exports.config = (passport) => {
                 reason: "존재하지 않는 사용자입니다.",
               });
             }
-            const user = results;
-            if (bcrypt.compareSync(password, results[0].passwd)) {
+            const user = results[0];
+            if (bcrypt.compareSync(password, user.passwd)) {
               return done(null, user);
             } else {
               return done(null, false, { reason: "비밀번호가 틀립니다." }); // 비밀번호 틀렸을 때

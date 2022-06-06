@@ -1,0 +1,108 @@
+mixin ImageDetail(attchment)
+  .swiper-slide.overflow-hidden.rounded
+    img.w-100.h-100.fit-cover(src=`${CWD}${attchment.destination}${attchment.filename}` alt='')  
+
+mixin EventDetail
+  +Section.py-6#page-single-product
+    .row
+      .col-lg-8.pe-lg-6
+        .row
+          .col-12
+            nav(aria-label="breadcrumb")
+              //-nav(style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb")
+              ol.breadcrumb.font-sans-serif.py-2.my-1
+                li.breadcrumb-item
+                  a(href=`${CWD}homes/clubevent.html`) Go Calendar
+                li.breadcrumb-item.active(aria-current='page') Event
+            h1.fs-3.mb-2 #{eventContents.title}
+          .col-12
+            .swiper-container.theme-slider.swiper-theme.h-100(data-swiper!={
+              autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+              },
+              loop: true,
+              effect: 'fade',
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                type: 'bullets',
+              },
+            } data-zanim-lg!={animation: "zoom-out", delay: 0}  data-zanim-trigger='scroll')
+              .swiper-wrapper
+                for attchment in attachmentList ? attachmentList : [] 
+                  +ImageDetail(attchment)
+              .swiper-pagination
+              .swiper-nav
+                .swiper-button-next.me-md-3
+                .swiper-button-prev.ms-md-3         
+          
+      .col-lg-4
+        .sticky-top.py-6.py-lg-8
+          h4.mt-4 일정
+          p.text-600 #{eventContents.start} - #{eventContents.end}
+          h4.mt-4 세부내용
+          p.text-600 #{eventContents.content}
+    if isAdmin
+      .row.justify-content-center.text-center
+        .col-lg-6
+          button.btn.btn-outline-dark.rounded-pill.mt-4(type='button' data-bs-toggle='modal' data-bs-target='#addEventInModal') Edit Event
+        .col-lg-6
+          button.btn.btn-outline-dark.rounded-pill.mt-4(type='button' data-bs-toggle='modal' data-bs-target='#deleteEventInModal') Delete Event
+      .modal.fade.fade-in#addEventInModal(tabindex='-1' role='dialog' aria-labelledby='exampleFadeInModalLabel' aria-hidden='true')
+        .modal-dialog.modal-dialog-centered(role='document')
+          form(action="editEvent", enctype="multipart/form-data", method='post').modal-content
+            .modal-header
+              h5.modal-title#exampleModalLabel Edit Event
+              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='btn-close')
+                span.fw-light(aria-hidden='true') ×
+            .modal-body
+              .row.g-3.needs-validation(novalidate)
+                .col-md-6
+                  label.form-label(for='inputStartEventLabel') Start Event Date
+                  input.form-control#inputStartEventDate(type='date', name='StartEventDate' , required='', value=`${eventContents.start}`)
+                  .invalid-feedback
+                    | 필수 입력값입니다.
+                .col-md-6
+                  label.form-label(for='inputEndEventLabel') End Event Date
+                  input.form-control#inputEndEventDate(type='date', name='EndEventDate', required='', value=`${eventContents.end}`)
+                  .invalid-feedback
+                    | 필수 입력값입니다.                  
+                .col-12
+                  label.form-label(for='inputEventTitleLabel') Event Title
+                  input.form-control#inputEventTitle(type='text', name='EventTitle', required='', value=`${eventContents.title}`)
+                  .invalid-feedback
+                    | 필수 입력값입니다.
+                .col-12
+                  label.form-label(for='inputEventContentLabel') Event Content
+                  textarea.form-control#inputEventContent(name='EventContent', rows="4" required='') #{eventContents.content}
+                  .invalid-feedback
+                    | 필수 입력값입니다.                    
+                .col-12
+                  label.form-label(for='inputEventColorLabel') Event Color
+                  input.form-control.form-control-lg#inputEventColor(type='color', name='EventColor', required='', value=`${eventContents.color}`)
+                  .invalid-feedback
+                    | 필수 입력값입니다.
+                .col-12
+                  label.form-label(for='formFileMultiple') Multiple files input example
+                  input.form-control#formFileMultiple(type='file', name='attachments' multiple)
+                .col-md-6                
+                  input.form-control#inputIdHidden(type='hidden', name='id', value=`${eventContents.id}`)
+                
+            .modal-footer
+              button.btn.btn-secondary.btn-sm(type='button' data-bs-dismiss='modal') Close
+              button.btn.btn-primary.btn-sm(type='submit', value='Save') Save Event  
+      .modal.fade.fade-in#deleteEventInModal(tabindex='-1' role='dialog' aria-labelledby='deleteFadeInModalLabel' aria-hidden='true')
+        .modal-dialog.modal-dialog-centered(role='document')
+          form(action="deleteEvent", method='post').modal-content
+            .modal-header
+              h5.modal-title#exampleModalLabel Delete Event
+              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='btn-close')
+                span.fw-light(aria-hidden='true') ×
+            .modal-body              
+              #{eventContents.title} 일정을 삭제 하시겠습니까?
+              .col-md-6                
+                  input.form-control#inputIdHidden(type='hidden', name='id', value=`${eventContents.id}`)
+            .modal-footer
+              button.btn.btn-secondary.btn-sm(type='button' data-bs-dismiss='modal') Close
+              button.btn.btn-primary.btn-sm(type='submit', value='Save') Delete Event  

@@ -36,7 +36,7 @@
   <body class="overflow-hidden-x">
 
     <nav class="fancynavbar fancynavbar-expand-md fancynavbar-left" data-zanim-lg='{"from":{"opacity":1,"x":70},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-xs='{"from":{"opacity":1,"y":-37},"to":{"opacity":1,"y":0},"ease":"CubicBezier","duration":0.8,"delay":0.3}' data-zanim-trigger="scroll" data-exclusive="true">
-      <div class="fancynavbar-togglerbar"><a class="fancynavbar-brand" href="index.html"><img class="fancynavbar-brand-img" src="assets/img/logo-sparrow-invert.svg" alt="" width="30" height="30" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll" />
+      <div class="fancynavbar-togglerbar" data-onscroll-fade-in="data-onscroll-fade-in"><a class="fancynavbar-brand" href="index.html"><img class="fancynavbar-brand-img" src="assets/img/logo-sparrow-invert.svg" alt="" width="30" height="30" data-zanim-lg='{"from":{"opacity":0,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll" />
           <!--You can use icon or text logo as well-->
           <!--<span class='fab fa-superpowers fs-3'></span>-->
           <!--<span class='logo-sparrow'>S</span>-->
@@ -46,18 +46,33 @@
             <path id="path-middle" d="M20,32h30"></path>
             <path id="path-bottom" d="M19.9,46.98c0,0,18.8-18.85,29.95-29.95C68.89-1.92,66,38.78,50,38.78c-8,0-30,0-30,0"></path>
           </svg></div>
-        <div class="fancynavbar-addon" data-zanim-lg='{"from":{"opacity":1,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll"><a class="fancynavbar-addon-item" href="#!"><span class="fab fa-twitter"></span></a><a class="fancynavbar-addon-item" href="#languageModal" data-bs-toggle="modal"><span class="font-sans-serif ls fw-black fs--1 d-block">EN</span></a></div>
+        <div class="fancynavbar-addon" data-zanim-lg='{"from":{"opacity":1,"x":45},"to":{"opacity":1,"x":0},"ease":"CubicBezier","duration":0.8,"delay":0.4}' data-zanim-trigger="scroll"><a class="fancynavbar-addon-item" href="pages/singin.html"><span class="font-sans-serif ls fw-black fs--1 d-block">Login</span></a><a class="fancynavbar-addon-item" href="#!"><span class="fab fa-twitter"></span></a><a class="fancynavbar-addon-item" href="#languageModal" data-bs-toggle="modal"><span class="font-sans-serif ls fw-black fs--1 d-block">EN</span></a></div>
       </div>
       <div class="fancynavbar-collapse">
         <ul class="fancynavbar-nav">
-          <li class="fancynav-item" data-one-page="data-one-page"><a class="fancynav-link" href="./index.html#defaultWhyUs"><span class="fancynav-link-content">클럽 정기행사</span></a></li>
-          <li class="fancynav-item" data-one-page="data-one-page"><a class="fancynav-link" href="./index.html#defaultServices"><span class="fancynav-link-content">공연 쇼 이벤트</span></a></li>
-          <li class="fancynav-item" data-one-page="data-one-page"><a class="fancynav-link" href="./index.html#defaultProgressbar"><span class="fancynav-link-content">컨시어지 숙박 호텔</span></a></li>
-          <li class="fancynav-item" data-one-page="data-one-page"><a class="fancynav-link" href="./index.html#defaultPricingPlan"><span class="fancynav-link-content">관광지 엑티비티</span></a></li>
-          <li class="fancynav-item" data-one-page="data-one-page"><a class="fancynav-link" href="./index.html#defaultMembers"><span class="fancynav-link-content">레스토랑 맛집</span></a></li>
-          <li class="fancynav-item" data-one-page="data-one-page"><a class="fancynav-link" href="./index.html#defaultGallery"><span class="fancynav-link-content">교통 렌트</span></a></li>
-          <li class="fancynav-item" data-one-page="data-one-page"><a class="fancynav-link" href="./index.html#defaultGallery"><span class="fancynav-link-content">쇼핑</span></a></li>
-          <li class="fancynav-item" data-one-page="data-one-page"><a class="fancynav-link" href="./joinus.html"><span class="fancynav-link-content">회원가입</span></a></li>
+          <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">It's Club Desk</span></a>
+            <div class="fancy-dropdown-menu">
+              <div class="row pb-4 pt-3">
+                <div class="col-auto"><a class=" false fancy-dropdown-item" href="homes/clubevent.html"> 회원 정기 행사</a><a class=" false fancy-dropdown-item" href="homes/clublist.html"> 회원관리</a><a class=" false fancy-dropdown-item" href="homes/default.html"> 고객센터</a></div>
+              </div>
+            </div>
+          </li>
+          <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">Travel</span></a>
+            <div class="fancy-dropdown-menu">
+              <div class="row pb-4 pt-3">
+                <div class="col-auto"><a class=" false fancy-dropdown-item" href="pages/about.html"> Tours</a><a class=" false fancy-dropdown-item" href="pages/about.html"> 쇼 &amp; 이벤트</a><a class=" false fancy-dropdown-item" href="pages/about.html"> 호텔 &amp; 숙박</a><a class=" false fancy-dropdown-item" href="pages/about.html"> 엑티비티 &amp; 관광지</a><a class=" false fancy-dropdown-item" href="pages/about.html"> 렌트 &amp; 교통</a><a class=" false fancy-dropdown-item" href="pages/about.html"> 레스토랑 &amp; 맛집</a><a class=" false fancy-dropdown-item" href="pages/about.html"> 쇼핑</a></div>
+              </div>
+            </div>
+          </li>
+          <li class="fancynav-item fancy-dropdown"><a class="fancynav-link fancy-dropdown-toggle" href="JavaScript:void(0)"><span class="fancynav-link-content">Company</span></a>
+            <div class="fancy-dropdown-menu">
+              <div class="row pb-2 pt-3">
+                <div class="col-sm-auto pe-3 mb-3"><a class="fancy-dropdown-item text-white fw-black ls text-uppercase fs--1 mb-1" href="JavaScript:void(0)">회사소개</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> Its Tours</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> Its Club</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> CI/BI</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> 찾아오시는길</a></div>
+                <div class="col-sm-auto pe-3 mb-3"><a class="fancy-dropdown-item text-white fw-black ls text-uppercase fs--1 mb-1" href="JavaScript:void(0)">비즈니스</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> 사업소개</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> G Alliance</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> 파트너</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> 회원 이용 약관</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> 공지사항</a></div>
+                <div class="col-sm-auto pe-3 mb-3"><a class="fancy-dropdown-item text-white fw-black ls text-uppercase fs--1 mb-1" href="JavaScript:void(0)">인재채용</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> 인재상</a><a class=" false fancy-dropdown-item" href="components/bootstrap/cards.html"> 채용공고</a></div>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>
@@ -668,7 +683,7 @@
         <div class="row align-items-center">
           <div class="col-lg-4 order-lg-2 position-relative"><a class="indicator indicator-up" href="#top"><span class="indicator-arrow indicator-arrow-one" data-zanim-xs='{"from":{"opacity":0,"y":15},"to":{"opacity":1,"y":-5,"scale":1},"ease":"Back.easeOut","duration":0.4,"delay":0.9}'></span><span class="indicator-arrow indicator-arrow-two" data-zanim-xs='{"from":{"opacity":0,"y":15},"to":{"opacity":1,"y":-5,"scale":1},"ease":"Back.easeOut","duration":0.4,"delay":1.05}'></span></a></div>
           <div class="col-lg-4 text-lg-start mt-4 mt-lg-0">
-            <p class="fs--1 text-uppercase ls fw-bold mb-0">Copyright &copy; 2021 Sparrow&trade; inc.</p>
+            <p class="fs--1 text-uppercase ls fw-bold mb-0">Copyright &copy; 2022 Sparrow&trade; inc.</p>
           </div>
           <div class="col-lg-4 text-lg-end order-lg-2 mt-2 mt-lg-0">
             <p class="fs--1 text-uppercase ls fw-bold mb-0">Made with<span class="text-danger fas fa-heart mx-1"></span>by <a class="text-600" href="https://themewagon.com/">Themewagon</a></p>

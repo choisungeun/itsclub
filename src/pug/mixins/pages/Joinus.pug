@@ -3,11 +3,11 @@ mixin Service(img, title, description)
     if img
       .overflow-hidden
         img(src=`${CWD}assets/img/icons/${img}` alt='' width=50 data-zanim-xs!={delay: 0.2, animation: 'slide-right'}).me-3.me-sm-4
-      .flex-1
+      .flex-1(OnClick="location.href='home/JoinusGeneral'" style="cursor:pointer;")
         .overflow-hidden
           h4.mb-2(data-zanim-xs!={delay: 0.1, animation: 'slide-right'})!=title
         .overflow-hidden
-          p.mb-0.fs--1(data-zanim-xs!={delay: 0.2, animation: 'slide-right'})!=description
+          p.mb-0.fs--1(data-zanim-xs!={delay: 0.5, animation: 'slide-right'})!=description
     else
       .flex-1
         .overflow-hidden
@@ -130,7 +130,7 @@ mixin Joinus
           .col-12.isotope-item.premium
             label(for='englishNameInput') 회원소유 은행명
             select#bankSelect.form-control(name='bank', required='')
-              for bank in bankList
+              for bank in bankList ? bankList : [] 
                 option(value=bank.code) #{bank.name}
             small.form-text.text-danger
               | ※ 유료회원

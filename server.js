@@ -7,7 +7,9 @@ const session = require("express-session");
 const cookiePaser = require("cookie-parser");
 const passport = require("passport");
 const dotenv = require("dotenv");
+const generalConfObj = require("./conf/general_conf");
 const passportConfig = require("./passport").config(passport);
+const errorController = require("./controllers/errorControllers");
 
 require("dotenv").config();
 
@@ -21,6 +23,7 @@ app.use(logger("dev"));
 app.set("views", `${__dirname}/src/pug`);
 app.set("view engine", "pug");
 app.use("/", express.static(`${__dirname}/public`));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookiePaser(process.env.COOKIE_SECRET));
@@ -38,12 +41,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function (req, res, next) {
-  // console.log("Time:", Date.now());
-  console.log(req.isAuthenticated());
-  console.log(req.user);
   res.locals.isLogin = false;
+  res.locals.isAdmin = false;
   if (req.isAuthenticated() && req.user) {
     res.locals.isLogin = true;
+    if (req.user.admin === "Y") {
+      res.locals.isAdmin = true;
+    }
   }
   next();
 });
@@ -60,3 +64,6 @@ app.listen(8000, () => {
 app.use("/", indexRouter);
 app.use("/homes", homesRouter); //클럽
 app.use("/pages", pagesRouter); //클럽
+
+app.use(errorController.pageNotFoundError);
+app.use(errorController.respondInternalError);

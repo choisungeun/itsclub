@@ -1,7 +1,7 @@
 mixin ComponentsNav
   ul#components-nav.components-nav.list-unstyled
 
-    each item, index in sitemap.components
+    each item, index in sitemap.components ? sitemap.components : []
       li
         if index === 'bootstrap'
           h5=index

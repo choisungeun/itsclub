@@ -6,11 +6,11 @@ const passport = require("passport");
  */
 var signIn = require("./pages/signin"); //로그인
 
-router.get("/singin.html", function (req, res, next) {
+router.get("/signin.html", function (req, res, next) {
   signIn.get(req, res, next);
 });
 
-router.post("/singin.html", (req, res, next) => {
+router.post("/signin.html", (req, res, next) => {
   signIn.loginCheck(req, res, next);
 });
 

@@ -8,14 +8,16 @@ var dbconnInfo = {
     user: "itsclub",
     password: "asdflkjlkj1!",
     database: "itsclub",
+    timezone: "Asia/Seoul",
     multipleStatements: true,
   },
   real: {
-    host: "1.1.1.1",
-    port: "1111",
-    user: "cafe24",
-    password: "cafe24",
-    database: "cafe24DB",
+    host: "10.0.0.1 ",
+    port: "3306",
+    user: "maiders",
+    password: "asdflkjlkj1!",
+    database: "maiders",
+    timezone: "Asia/Seoul",
     multipleStatements: true,
   },
 };
@@ -37,6 +39,16 @@ var dbconnection = {
         console.error("mysql connection error : " + err);
       } else {
         console.info("mysql connection successfully.");
+      }
+    });
+  },
+
+  dbclose: function (con) {
+    con.dbclose(function (err) {
+      if (err) {
+        console.error("mysql close error : " + err);
+      } else {
+        console.info("mysql close successfully.");
       }
     });
   },

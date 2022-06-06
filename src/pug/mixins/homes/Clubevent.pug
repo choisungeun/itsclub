@@ -7,3 +7,48 @@ mixin ClubEventHeader
     
     .calendar-container
       #calendar
+    if isAdmin
+      .row.justify-content-center.text-center
+        .col-lg-8
+          button.btn.btn-outline-dark.rounded-pill.mt-4(type='button' data-bs-toggle='modal' data-bs-target='#addEventInModal') Add Event
+      .modal.fade.fade-in#addEventInModal(tabindex='-1' role='dialog' aria-labelledby='exampleFadeInModalLabel' aria-hidden='true')
+        .modal-dialog.modal-dialog-centered(role='document')
+          form(action="addEvent", enctype="multipart/form-data", method='post').modal-content
+            .modal-header
+              h5.modal-title#exampleModalLabel Add Event
+              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='btn-close')
+                span.fw-light(aria-hidden='true') ×
+            .modal-body
+              .row.g-3.needs-validation(novalidate)
+                .col-md-6
+                  label.form-label(for='inputStartEventLabel') Start Event Date
+                  input.form-control#inputStartEventDate(type='date', name='StartEventDate' , required='')
+                  .invalid-feedback
+                    | 필수 입력값입니다.
+                .col-md-6
+                  label.form-label(for='inputEndEventLabel') End Event Date
+                  input.form-control#inputEndEventDate(type='date', name='EndEventDate', required='')
+                  .invalid-feedback
+                    | 필수 입력값입니다.                  
+                .col-12
+                  label.form-label(for='inputEventTitleLabel') Event Title
+                  input.form-control#inputEventTitle(type='text', name='EventTitle', required='')
+                  .invalid-feedback
+                    | 필수 입력값입니다.
+                .col-12
+                  label.form-label(for='inputEventContentLabel') Event Content
+                  textarea.form-control#inputEventContent(name='EventContent', rows="4" required='')
+                  .invalid-feedback
+                    | 필수 입력값입니다.                    
+                .col-12
+                  label.form-label(for='inputEventColorLabel') Event Color
+                  input.form-control.form-control-lg#inputEventColor(type='color', name='EventColor', required='' value="#0091ff")
+                  .invalid-feedback
+                    | 필수 입력값입니다.
+                .col-12
+                  label.form-label(for='formFileMultiple') Multiple files input example
+                  input.form-control#formFileMultiple(type='file', name='attachments' multiple)
+                
+            .modal-footer
+              button.btn.btn-secondary.btn-sm(type='button' data-bs-dismiss='modal') Close
+              button.btn.btn-primary.btn-sm(type='submit', value='Save') Save Event

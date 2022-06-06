@@ -1,11 +1,7 @@
-var dbConObj = require("../../conf/db_info"); //사용자 정의한 함수 사용
-var dbconn = dbConObj.init();
-
 var clubList = {
   //클럽목록
-  list: function (req, res, next) {
+  list: function (req, res, next, dbconn) {
     var sql = "select * from club"; // 클럽목록
-    dbConObj.dbopen(dbconn);
     dbconn.query(sql, function (err, results, fields) {
       if (err) {
         res

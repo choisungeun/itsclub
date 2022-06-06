@@ -1,26 +1,31 @@
-var dbConObj = require("../conf/db_info");
-var dbconn = dbConObj.init();
 const bcrypt = require("bcryptjs");
 
 var calendarEvent = {
-  get: function (req, res, next) {
+  get: function (req, res, next, dbconn) {
     console.log("Get calendarEvent");
-    var sql = "select * from bank_list"; // 은행목록
-    dbConObj.dbopen(dbconn);
+    var sql =
+      "select " +
+      " id" +
+      ", DATE_FORMAT(start_date, '%Y-%m-%dT%H:%i:%s' ) as start " +
+      ", DATE_FORMAT(DATE_ADD(end_date, INTERVAL 1 DAY), '%Y-%m-%dT%H:%i:%s') as end" +
+      ", title" +
+      ", color" +
+      ", 'true' as allDay" +
+      ", concat('eventDetail', '?', 'id=', id) as url" +
+      " from calendar_event"; // 이벤트 목록
+    // var sql = "select id, start_date as start, DATE_ADD(end_date, INTERVAL 1 MINUTE) as end, title, color, 'true' as allDay from calendar_event"; // 이벤트 목록
     dbconn.query(sql, function (err, results, fields) {
+      console.log(results);
+      var resultArray = null;
+      if (results.length > 0) {
+        resultArray = Object.values(JSON.parse(JSON.stringify(results)));
+      }
+      console.log(resultArray);
       if (err) {
-        res
-          .status(500)
-          .json({ status_code: 500, status_message: "internal server error" });
+        res.status(500).json({ status_code: 500, status_message: "internal server error" });
       } else {
         // Render index.pug page using array
-        res.send([
-          {
-            title: "Long Event",
-            start: "2022-01-26",
-            end: "2022-02-16",
-          },
-        ]);
+        res.send(resultArray);
       }
     });
   },

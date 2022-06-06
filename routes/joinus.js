@@ -1,13 +1,10 @@
-var dbConObj = require("../conf/db_info"); //사용자 정의한 함수 사용
-var dbconn = dbConObj.init();
 const bcrypt = require("bcryptjs");
 
 var joinUs = {
   //클럽목록
-  get: function (req, res, next) {
+  get: function (req, res, next, dbconn) {
     console.log("Get joinUs");
     var sql = "select * from bank_list"; // 은행목록
-    dbConObj.dbopen(dbconn);
     dbconn.query(sql, function (err, results, fields) {
       if (err) {
         res
@@ -21,7 +18,7 @@ var joinUs = {
       }
     });
   },
-  join: function (req, res, next) {
+  join: function (req, res, next, dbconn) {
     console.log("joinUs");
 
     var crypt_passwd = bcrypt.hashSync(req.body.passwd);
@@ -63,7 +60,6 @@ var joinUs = {
       crypt_passwd +
       "')"; // 클럽목록
 
-    dbConObj.dbopen(dbconn);
     dbconn.query(sql, function (err, results, fields) {
       console.log(results);
       if (err) {
