@@ -1,34 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var initialLocaleCode = "ko";
-
   var calendarEl = document.getElementById("calendar");
 
+  var initialLocaleCode = "ko";
+
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    eventClick: function (info) {
-      console.log("Event: " + info.event.title);
-      console.log("Event: " + info.event.end);
-    },
-    dateClick: function (arg) {
-      console.log(arg.date.toString());
-      console.log("a day has been clicked!");
-    },
-    headerToolbar: {
-      left: "prevYear,prev,next,nextYear today",
+    plugins: ["interaction", "dayGrid", "timeGrid", "list"],
+    height: "parent",
+    header: {
+      left: "prev,next today",
       center: "title",
       right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
     },
-    initialView: "dayGridMonth",
-    initialDate: new Date(),
-    locale: initialLocaleCode,
+    defaultView: "dayGridMonth",
+    defaultDate: new Date(),
     navLinks: true, // can click day/week names to navigate views
     // editable: true,
-    selectable: true,
-    nowIndicator: true,
-    dayMaxEvents: true, // allow "more" link when too many events
+    eventLimit: true, // allow "more" link when too many events
     fixedWeekCount: false,
-    forceEventDuration: true,
-    // timeZone: "Asia/Seoul",
-    ignoreTimezone: true,
+    locale: initialLocaleCode,
     events: {
       url: "/calendar",
       method: "POST",
@@ -40,22 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("there was an error while fetching events!");
       },
     },
-    // eventDrop: function (info) {
-    //   alert(
-    //     info.event.title + " was dropped on " + info.event.start.toISOString()
-    //   );
-
-    //   if (!confirm("Are you sure about this change?")) {
-    //     info.revert();
-    //   }
-    // },
-    // eventResize: function (info) {
-    //   alert(info.event.title + " end is now " + info.event.end.toISOString());
-
-    //   if (!confirm("is this okay?")) {
-    //     info.revert();
-    //   }
-    // },
   });
 
   calendar.render();

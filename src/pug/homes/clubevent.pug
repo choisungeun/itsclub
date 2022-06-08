@@ -1,21 +1,37 @@
 extends ../layouts/LayoutTheme
 include ../mixins/homes/Clubevent
 
+//- prepend styles
+//-   link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')  
+//-   link(href=`${CWD}vendors/calendar/main.css`, rel='stylesheet')
+
+//- prepend scripts
+//-   script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)  
+//-   script(src=`${CWD}vendors/bigpicture/BigPicture.js`)
+//-   script(src=`${CWD}vendors/rellax/rellax.min.js`) 
+//-   script(src=`${CWD}vendors/calendar/main.js`) 
+//-   script(src=`${CWD}vendors/calendar/calendar.js`) 
 prepend styles
   link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')  
-  link(href=`${CWD}vendors/calendar/main.css`, rel='stylesheet')
-  //- link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap' rel='stylesheet')
-  //- link(href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
-  //- link(href=`${CWD}vendors/calendar2/style.css` rel='stylesheet')
+  //- link(href='https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap' rel='stylesheet')
+  //- link(href='https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap' rel='stylesheet')
+  link(href=`${CWD}vendors/calendar/fonts/icomoon/style.css` rel='stylesheet')
+  link(href=`${CWD}vendors/calendar/fullcalendar/packages/core/main.css` rel='stylesheet')
+  link(href=`${CWD}vendors/calendar/fullcalendar/packages/daygrid/main.css` rel='stylesheet')
+  link(href=`${CWD}vendors/calendar/css/bootstrap.min.css` rel='stylesheet' )
+  link(href=`${CWD}vendors/calendar/css/style.css` rel='stylesheet')
 
 prepend scripts
   script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)  
   script(src=`${CWD}vendors/bigpicture/BigPicture.js`)
   script(src=`${CWD}vendors/rellax/rellax.min.js`) 
-  script(src=`${CWD}vendors/calendar/main.js`) 
-  script(src=`${CWD}vendors/calendar/calendar.js`) 
-  //- script(src=`${CWD}vendors/calendar2/jquery.min.js`)
-  //- script(src=`${CWD}vendors/calendar2/main.js`)  
+  script(src=`${CWD}vendors/calendar/fullcalendar/packages/core/main.js`)
+  script(src=`${CWD}vendors/calendar/fullcalendar/packages/interaction/main.js`)
+  script(src=`${CWD}vendors/calendar/fullcalendar/packages/daygrid/main.js`)
+  script(src=`${CWD}vendors/calendar/fullcalendar/packages/timegrid/main.js`)
+  script(src=`${CWD}vendors/calendar/fullcalendar/packages/list/main.js`)
+  script(src=`${CWD}vendors/calendar/calendar.js`)
+  script(src=`${CWD}vendors/calendar/js/main.js`)
 
 append mainContent
   +ClubEventHeader
